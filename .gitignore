@@ -37,3 +37,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# revision notes
+REVISION_NOTES_*.md
+NOTES_FOR_REVISION.md

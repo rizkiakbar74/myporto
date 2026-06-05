@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView, useScroll, useTransform, type Variants } from "framer-motion";
 import { Code2, Download, Github, Instagram, Layers3, Linkedin, Mail, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { profile } from "@/data/profile";
@@ -32,15 +32,15 @@ const socialLinks = [
   },
 ];
 
-const introVariants = {
+const introVariants: Variants = {
   hidden: { opacity: 0, y: 26, filter: "blur(8px)" },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.62, delay, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.62, delay, ease: "easeOut" },
   }),
-};
+} as any;
 
 function HeroButton({
   href,
@@ -153,7 +153,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 38, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
             className="glass-card relative mx-auto aspect-[4/4.2] w-full max-w-[33rem] overflow-hidden rounded-[2.4rem] border border-white/10 p-4 shadow-[0_30px_90px_rgba(6,9,24,0.65)]"
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.12),transparent_28%),radial-gradient(circle_at_80%_25%,rgba(124,58,237,0.14),transparent_24%),radial-gradient(circle_at_52%_100%,rgba(15,98,254,0.12),transparent_32%)]" />
@@ -213,7 +213,7 @@ export default function Hero() {
             <motion.div animate={isHeroInView ? { x: ["-120%", "125%"] } : { x: "-120%" }} transition={{ duration: 7.4, repeat: isHeroInView ? Infinity : 0, repeatDelay: 2.4, ease: "easeInOut" }} className="pointer-events-none absolute inset-y-0 z-30 w-1/2 bg-gradient-to-r from-transparent via-white/8 to-transparent" />
             <motion.div animate={isHeroInView ? { y: ["-20%", "120%"] } : { y: "-20%" }} transition={{ duration: 7.6, repeat: isHeroInView ? Infinity : 0, repeatDelay: 2.8, ease: "easeInOut" }} className="pointer-events-none absolute inset-x-0 z-30 h-24 bg-gradient-to-b from-transparent via-cyanx/10 to-transparent" />
 
-            <motion.div initial={{ opacity: 0, y: 42, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.95, delay: 0.34, ease: [0.16, 1, 0.3, 1] }} className="absolute inset-x-0 bottom-0 z-20 flex h-[94%] items-end justify-center">
+            <motion.div initial={{ opacity: 0, y: 42, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.95, delay: 0.34, ease: "easeOut" }} className="absolute inset-x-0 bottom-0 z-20 flex h-[94%] items-end justify-center">
               <Image src="/images/rizki-profile-cutout.png" alt="Muhammad Rizki Akbar" width={705} height={857} priority sizes="(max-width: 768px) 86vw, 520px" className="h-full w-auto object-contain object-bottom drop-shadow-[0_30px_70px_rgba(34,211,238,0.18)]" />
             </motion.div>
 

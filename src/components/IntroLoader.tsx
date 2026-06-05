@@ -47,7 +47,7 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, filter: "blur(10px)" }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.65, ease: "easeOut" }}
           className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-[#081326] text-white"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(15,98,254,0.14),transparent_34%),radial-gradient(circle_at_65%_55%,rgba(34,211,238,0.08),transparent_30%)]" />
@@ -56,7 +56,7 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           >
             {orbitRings.map((ring, index) => (
@@ -90,7 +90,7 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
           <motion.div
             initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.8, delay: 0.12, ease: "easeOut" }}
             className="relative z-10 px-6 text-center"
           >
             <h1 className="min-h-[4.6rem] text-balance text-4xl font-black tracking-[-0.06em] text-bluex sm:text-6xl lg:text-7xl">
@@ -111,7 +111,7 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: typedLength >= INTRO_TEXT.length ? 1 : 0, y: typedLength >= INTRO_TEXT.length ? 0 : 12 }}
-              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.55, ease: "easeOut" }}
               className="mt-6 text-xs font-bold uppercase tracking-[0.22em] text-cyanx/80 sm:text-sm"
             >
               created with <span className="text-white">❤️</span> by Muhammad Rizki Akbar
