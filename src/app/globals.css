@@ -580,15 +580,16 @@ a {
   line-height: .83;
 }
 
-.date-inner p {
+.date-inner time {
   position: absolute;
   right: 72px;
-  top: 10px;
-  margin: 0;
-  color: rgba(74,255,234,.72);
-  font-size: 8px;
-  line-height: 1.25;
+  top: 24px;
+  color: rgba(74,255,234,.82);
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: .08em;
   font-weight: 900;
+  text-shadow: 0 0 14px rgba(74,255,234,.32);
 }
 
 .side {
@@ -1040,7 +1041,7 @@ a {
 }
 
 @media (max-width: 820px) {
-  .side, .date-inner p, .hud-bottom, .mini-read, .orb {
+  .side, .hud-bottom, .mini-read, .orb {
     display: none;
   }
 
@@ -1051,6 +1052,7 @@ a {
   .date-inner span { left: 65px; }
   .date-inner strong { left: 111px; }
   .date-inner b { left: 185px; }
+  .date-inner time { right: 48px; }
 
   .central-hud {
     transform: scale(.76);
@@ -1395,4 +1397,3 @@ a {
     width: calc(100vw - 48px);
   }
 }
-

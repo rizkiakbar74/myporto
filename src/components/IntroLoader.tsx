@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 type IntroLoaderProps = {
   onComplete: () => void;
@@ -69,15 +69,10 @@ const HUD_MARKUP = `<main class="scene" aria-label="Futuristic HUD intro animati
 
       <header class="hud-date">
         <div class="date-inner">
-          <span>JUNE</span>
-          <strong>2026</strong>
-          <b>06</b>
-          <p>
-            THIS UI IS GENERATED<br />
-            FOR PORTFOLIO SYSTEM<br />
-            PROFILE DATA ONLINE<br />
-            CLEAN WEB INTERFACE
-          </p>
+          <span id="dateMonth"></span>
+          <strong id="dateYear"></strong>
+          <b id="dateDay"></b>
+          <time id="dateTime" aria-label="Current time"></time>
         </div>
       </header>
 
@@ -214,7 +209,6 @@ const HUD_MARKUP = `<main class="scene" aria-label="Futuristic HUD intro animati
 
 export default function IntroLoader({ onComplete }: IntroLoaderProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
-  const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -250,6 +244,10 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
     const helloText = query<HTMLElement>("#helloText");
     const welcomeText = query<HTMLElement>("#welcomeText");
     const cpuText = query<HTMLElement>("#cpuText");
+    const dateMonth = query<HTMLElement>("#dateMonth");
+    const dateYear = query<HTMLElement>("#dateYear");
+    const dateDay = query<HTMLElement>("#dateDay");
+    const dateTime = query<HTMLTimeElement>("#dateTime");
 
     const setStage = (name: keyof typeof stages) => {
       Object.values(stages).forEach((stage) => stage?.classList.remove("active"));
@@ -336,8 +334,27 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
       }, 850);
     };
 
+    const updateDateTime = () => {
+      const now = new Date();
+
+      if (dateMonth) {
+        dateMonth.textContent = new Intl.DateTimeFormat("en-US", { month: "long" }).format(now).toUpperCase();
+      }
+      if (dateYear) dateYear.textContent = String(now.getFullYear());
+      if (dateDay) dateDay.textContent = String(now.getDate()).padStart(2, "0");
+      if (dateTime) {
+        dateTime.dateTime = now.toISOString();
+        dateTime.textContent = new Intl.DateTimeFormat("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        }).format(now);
+      }
+    };
+
     const finishIntroQuickly = () => {
-      setIsLeaving(true);
+      root.classList.add("hud-intro-overlay--leaving");
       setTimer(onComplete, 620);
     };
 
@@ -375,6 +392,8 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
       });
     };
 
+    updateDateTime();
+    setIntervalSafe(updateDateTime, 1000);
     boot();
 
     return () => {
@@ -386,7 +405,7 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
   return (
     <div
       ref={rootRef}
-      className={`hud-intro-overlay ${isLeaving ? "hud-intro-overlay--leaving" : ""}`}
+      className="hud-intro-overlay"
       dangerouslySetInnerHTML={{ __html: HUD_MARKUP }}
     />
   );
