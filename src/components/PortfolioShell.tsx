@@ -43,9 +43,8 @@ export default function PortfolioShell() {
     <main className="relative overflow-hidden">
       {!introDone && <IntroLoader onComplete={finishIntro} />}
       <motion.div
-        initial={{ opacity: 0, y: 18, filter: "blur(12px)" }}
-        animate={introDone ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y: 18, filter: "blur(12px)" }}
-        transition={{ duration: 0.72, ease: "easeOut" }}
+        initial={false}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         aria-hidden={!introDone}
       >
         <CinematicBackground />

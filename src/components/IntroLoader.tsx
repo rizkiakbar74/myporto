@@ -350,7 +350,15 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
           second: "2-digit",
           hour12: false,
         }).format(now);
+        dateTime.classList.remove("date-time--tick");
+        void dateTime.offsetWidth;
+        dateTime.classList.add("date-time--tick");
       }
+    };
+
+    const runClock = () => {
+      updateDateTime();
+      setTimer(runClock, 1000 - (Date.now() % 1000));
     };
 
     const finishIntroQuickly = () => {
@@ -392,8 +400,7 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
       });
     };
 
-    updateDateTime();
-    setIntervalSafe(updateDateTime, 1000);
+    runClock();
     boot();
 
     return () => {

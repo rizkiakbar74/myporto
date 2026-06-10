@@ -1,5 +1,3 @@
-import { githubAssets } from "./assets";
-
 export type ProjectItem = {
   title: string;
   category: string;
@@ -18,7 +16,7 @@ export const projects: ProjectItem[] = [
     description:
       "A full redesign of my old GitHub Pages portfolio into a cinematic website powered by Next.js, TypeScript, Tailwind CSS, and Framer Motion, ready for Vercel deployment.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    image: "/images/projects/portfolio-cinematic.svg",
+    image: "/images/projects/screenshots/cinematic-portfolio.png",
     href: "https://rizkiakbar74.vercel.app/",
     status: "New version",
     featured: true,
@@ -29,7 +27,7 @@ export const projects: ProjectItem[] = [
     description:
       "My earlier HTML, CSS, and JavaScript portfolio. It became the content base for this new version, including profile, experience, projects, gallery, and contact sections.",
     stack: ["HTML", "CSS", "JavaScript", "GitHub Pages"],
-    image: githubAssets.keyboardGallery[1],
+    image: "/images/projects/screenshots/old-portfolio.png",
     href: "https://rizkiakbar74.github.io/",
     status: "Content source",
   },
@@ -39,7 +37,7 @@ export const projects: ProjectItem[] = [
     description:
       "A company profile concept focused on presenting business information, services, brand visuals, and clear contact actions in a responsive layout.",
     stack: ["HTML", "CSS", "Responsive UI", "Landing Page"],
-    image: "/images/projects/company-profile.svg",
+    image: "/images/projects/screenshots/company-profile.png",
     href: "https://rizkiakbar74.github.io/rizkiakbarcompany/",
     status: "Legacy project",
   },
@@ -49,7 +47,7 @@ export const projects: ProjectItem[] = [
     description:
       "A simple business website for showing brand identity, products, shop information, and contact/order actions in a mobile-friendly design.",
     stack: ["HTML", "CSS", "Bootstrap", "JavaScript"],
-    image: "/images/projects/kedai-kopi.svg",
+    image: "/images/projects/screenshots/coffee-shop.png",
     href: "https://rizkiakbar74.github.io/kedai-kopi-rizki/",
     status: "Legacy project",
   },
@@ -59,7 +57,7 @@ export const projects: ProjectItem[] = [
     description:
       "A personal finance application for tracking transactions, budgets, recurring bills, subscriptions, wallets, and financial goals.",
     stack: ["Next.js", "TypeScript", "Finance Dashboard", "Vercel"],
-    image: githubAssets.keyboardGallery[4],
+    image: "/images/projects/screenshots/personal-finance.png",
     href: "https://finova-sooty.vercel.app/",
     status: "Live application",
   },
@@ -69,7 +67,7 @@ export const projects: ProjectItem[] = [
     description:
       "A project management system designed to organize tasks, monitor project progress, and support team collaboration.",
     stack: ["Web Application", "Project Tracking", "Dashboard", "Vercel"],
-    image: "/images/projects/iti-project-manager.svg",
+    image: "/images/projects/screenshots/project-management.png",
     href: "https://iti-project-manajer.vercel.app/",
     status: "Live application",
   },
@@ -79,7 +77,7 @@ export const projects: ProjectItem[] = [
     description:
       "An official website built for PSPPI Institut Teknologi Indonesia to present program information and institutional services.",
     stack: ["Institution Website", "Responsive UI", "Content Management", "Production"],
-    image: githubAssets.keyboardGallery[5],
+    image: "/images/projects/screenshots/psppi-iti.png",
     href: "https://psppi.iti.ac.id",
     status: "Production website",
   },
