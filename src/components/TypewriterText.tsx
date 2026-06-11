@@ -66,7 +66,7 @@ export default function TypewriterText({
     );
 
     return () => window.clearTimeout(timeout);
-  }, [deletingSpeed, hasStarted, isDeleting, pauseDelay, safeWords, text, typingSpeed, wordIndex]);
+  }, [active, deletingSpeed, hasStarted, isDeleting, pauseDelay, safeWords, text, typingSpeed, wordIndex]);
 
   return (
     <span className={`inline-flex max-w-full items-center overflow-hidden whitespace-nowrap ${className}`} aria-label={text || safeWords[0]}>

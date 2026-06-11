@@ -1,22 +1,28 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { FallingPattern } from "@/components/ui/falling-pattern";
 
 export default function CinematicBackground() {
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, -180]);
-  const opacity = useTransform(scrollYProgress, [0, 0.45, 1], [1, 0.65, 0.28]);
-
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-ink">
-      <motion.div style={{ y, opacity }} className="absolute inset-0">
-        <div className="absolute left-[-14rem] top-[-10rem] h-[34rem] w-[34rem] rounded-full bg-cyanx/20 blur-[140px]" />
-        <div className="absolute right-[-16rem] top-[5rem] h-[38rem] w-[38rem] rounded-full bg-violetx/18 blur-[150px]" />
-        <div className="absolute bottom-[-18rem] left-[30%] h-[42rem] w-[42rem] rounded-full bg-bluex/12 blur-[170px]" />
-      </motion.div>
+      <FallingPattern
+        className="absolute inset-0 opacity-20 [filter:brightness(1.45)_saturate(1.35)] [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_100%)]"
+        colors={[
+          "rgb(236, 250, 233)",
+          "rgb(223, 233, 233)",
+          "rgb(248, 248, 248)",
+        ]}
+        backgroundColor="#05070d"
+        duration={52}
+        density={1.2}
+        aria-hidden="true"
+      />
+      <div className="absolute left-[-14rem] top-[-10rem] h-[30rem] w-[30rem] rounded-full bg-cyanx/20 blur-[110px]" />
+      <div className="absolute right-[-16rem] top-[5rem] h-[32rem] w-[32rem] rounded-full bg-violetx/18 blur-[120px]" />
+      <div className="absolute bottom-[-18rem] left-[30%] h-[36rem] w-[36rem] rounded-full bg-bluex/14 blur-[130px]" />
       <div className="absolute inset-0 opacity-[0.13] grid-pattern" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,7,13,0.15)_44%,rgba(5,7,13,0.9)_100%)]" />
-      <div className="absolute inset-x-0 top-1/3 h-px bg-gradient-to-r from-transparent via-cyanx/35 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,7,13,0.03)_62%,rgba(5,7,13,0.5)_100%)]" />
+      <div className="absolute inset-x-0 top-1/3 h-px bg-gradient-to-r from-transparent via-cyanx/70 to-transparent" />
     </div>
   );
 }

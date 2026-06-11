@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform, type Variants } from "framer-motion";
-import { Code2, Download, Github, Instagram, Layers3, Linkedin, Mail, Sparkles } from "lucide-react";
+import { Code2, Download, Github, Instagram, Linkedin, Mail, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { profile } from "@/data/profile";
 import TypewriterText from "./TypewriterText";
@@ -34,13 +34,17 @@ const socialLinks = [
 
 const introVariants: Variants = {
   hidden: { opacity: 0, y: 26, filter: "blur(8px)" },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.62, delay, ease: "easeOut" },
-  }),
-} as any;
+  visible: (custom: unknown) => {
+    const delay = typeof custom === "number" ? custom : 0;
+
+    return {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { duration: 0.62, delay, ease: "easeOut" },
+    };
+  },
+};
 
 function HeroButton({
   href,

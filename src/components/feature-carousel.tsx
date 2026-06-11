@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button'; // Assuming you have a Button component from shadcn/ui
 import { cn } from '@/lib/utils'; // Assuming you have a utility for class names
@@ -93,9 +94,12 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
                       visibility: Math.abs(pos) > 1 ? 'hidden' : 'visible',
                     }}
                   >
-                    <img
+                    <Image
                       src={image.src}
                       alt={image.alt}
+                      fill
+                      sizes="(min-width: 768px) 256px, 192px"
+                      unoptimized
                       className="object-cover w-full h-full rounded-3xl border-2 border-foreground/10 shadow-2xl"
                     />
                   </div>
